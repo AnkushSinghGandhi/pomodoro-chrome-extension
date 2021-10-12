@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+
+body {
+    background-color: rgb(51, 11, 116);
+    color: white;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#timer {
+    background-color: rgb(77, 25, 161);
+    padding: 10px 0 20px;
+} 
+
+.buttons {
+    width: fit-content;
+    margin: auto;
+}
+
+.button {
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#countdown {
+    clear: both;
+    width: fit-content;
+    margin: auto;
+    font-size: 90px;
+    font-weight: 500;
+    padding: 20px;
+}
+
+#start-btn {
+    width: 40px;
+    margin: 10px auto 0;
+    padding: 10px 30px;
+    text-align: center;
+    background-color: rgb(33, 10, 70);
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(33, 10, 70);;
+} 
+
+#current-task-display {
+    width: 100%;
+    padding-top: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+#tasks-container {
+    margin: auto;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 20px 10px;
+    margin-bottom: 5px;
+    background-color: white;
+    color: black;
+}
+
+.right {
+    float: right;
+}
+
+.delete-btn {
+    padding: 10px;
+    background-color: rgb(33, 10, 70);
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#add-task-btn {
+    width: 200px;
+    margin: 0 auto 10px;
+    background-color: rgb(33, 10, 70);
+    padding: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#task-form {
+    clear: both;
+    background-color: white;
+    color: black;
+    height: 100px;
+    padding: 15px;
+}
+
+#text {
+    border: none;
+    width: 95%;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#est-pomodoro {
+    margin: 10px 10px 0;
+    width: 50px;
+    padding: 5px;
+}
+
+#save, #cancel {
+    border: none;
+    width: 60px;
+    padding: 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+@media (min-width: 400px) {
+    #timer {
+        width: 400px;
+    }
+}
+
+@media (min-width: 470px) {
+    #task-form {
+        width: 470px;
+    }
+}
+
+@media (min-width: 500px) {
+    #tasks-container {
+        width: 500px;
+    }
+}
