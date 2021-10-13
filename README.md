@@ -27,7 +27,7 @@
   </a>
 </p>
 
-# pomodoro-chrome-extension (v1.0.0)
+# pomodoro-chrome-extension (v1.0.1)
 Simple Chrome Extension for a quick launcher to your all social media profiles at one click.
 
 ## Demo :purple_heart:
