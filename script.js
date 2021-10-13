@@ -17,9 +17,9 @@ const selectedTask = document.getElementById('selected-task')
 const audio = document.getElementById('audio')
 
 let tasks = []
-let minutes 
-let seconds 
-let pause 
+let minutes
+let seconds
+let pause
 let pomodoro = "pomodoro"
 let pomodorosCompleted = 0
 let selectedTaskElement
@@ -34,10 +34,7 @@ chrome.storage.sync.get(array,function(value){
         else
             minutes = 25;
 
-        if(value.seconds)
-            seconds = value.seconds;
-        else
-            seconds = 60;
+        seconds = value.seconds;
 
         if(value.countdownTimer)
             countdownTimer.innerHTML = value.countdownTimer;
@@ -47,15 +44,16 @@ chrome.storage.sync.get(array,function(value){
         if((value.pause) && (value.countdownTimer != "25:00")){
             pause = value.pause;
             startBtn.innerHTML = "start"
+            countdown()
         }
         else if((!value.pause) && (value.countdownTimer != "25:00")){
             pause = value.pause;
             startBtn.innerHTML = "Pause"
-            countdown() 
+            countdown()
         }
         else
             pause = true;
-            
+
         if (value.pbutton){
             if (value.pbutton == "shortBreakBtn"){
                 shortBreakBtn.classList.add('selected');
@@ -238,7 +236,7 @@ document.addEventListener('click', e => {
         const listItem = e.target.closest('.list-item')
         listItem.remove()
 
-        // find the id of the task to remove the task object from the array  
+        // find the id of the task to remove the task object from the array
         const taskId = listItem.dataset.taskId
         tasks = tasks.filter(task => task.id !== taskId )
 
@@ -285,20 +283,15 @@ function addTask(task) {
 
 // countdown function
 function countdown() {
-    // return if countdown is paused
-    if(pause) return
 
-    // set minutes and seconds
     let currentMins = minutes - 1
-    seconds--
     let currentTimer = (currentMins < 10 ? "0" : "") + currentMins.toString() + ':' + (seconds < 10 ? "0" : "") + String(seconds)
-    countdownTimer.innerHTML = currentTimer
 
-    chrome.storage.sync.set({"seconds":seconds,"countdownTimer":currentTimer},function(){
-        if(!chrome.runtime.error){
-            console.log("started");
-        }
-    })
+    if(!pause) {
+        // set minutes and seconds
+        seconds--
+        countdownTimer.innerHTML = currentTimer
+    }
     // count down every second, when a minute is up, countdown one minute
     // when time reaches 0:00, reset
     if(seconds > 0) {
@@ -306,21 +299,16 @@ function countdown() {
     } else if(currentMins > 0){
         seconds = 60
         minutes--
-        chrome.storage.sync.set({"seconds":seconds,"minutes":minutes},function(){
-            if(!chrome.runtime.error){
-                console.log("started");
-            }
-        })
-        countdown();           
+        countdown();
     } else if(currentMins === 0) {
         audio.play()
-        reset()        
+        reset()
     }
 }
 
 // reset function when countdown ends
 function reset() {
-    // set to start the next round    
+    // set to start the next round
     startBtn.innerHTML = "Start"
     pause = true
 
@@ -360,8 +348,22 @@ function reset() {
         const current = tasks.find(task => task.id === selectedTaskId)
         current.completedPomodoros++
         const pomodoroCount = selectedTaskElement.querySelector('.pomodoro-count')
-        pomodoroCount.innerHTML = current.completedPomodoros.toString() + '/' + current.totalPomodoros 
+        pomodoroCount.innerHTML = current.completedPomodoros.toString() + '/' + current.totalPomodoros
     }
 
     // TODO add option to start next round automatically
+
+    let dict = {
+        "minutes": minutes,
+        "pause": pause,
+        "seconds": seconds,
+        "countdownTimer":"25:00",
+        "pbutton": "pomodoroBtn"
+    }
+
+    chrome.storage.sync.set(dict,function(){
+        if(!chrome.runtime.error){
+            console.log("paused");
+        }
+    })
 }
