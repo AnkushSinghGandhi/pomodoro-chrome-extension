@@ -28,11 +28,38 @@
 </p>
 
 # pomodoro-chrome-extension (v1.0.1)
-Simple Chrome Extension for a quick launcher to your all social media profiles at one click.
+Pomodoro time & To do list chrome extension.
 
 ## Demo :purple_heart:
 
 ![Screenshot from 2021-10-12 19-58-50](https://user-images.githubusercontent.com/55637484/136977309-28dfd6e6-2d5f-4438-b629-c9074e75c069.png)
+
+## What is the Pomodoro Technique?
+The Pomodoro Technique was developed by Francesco Cirillo. He was struggling to focus on his studies. Feeling overwhelmed, he asked himself to commit to just 10 minutes of focused study time. Encouraged by the challenge, he found a tomato (pomodoro in Italian) shaped kitchen timer, and the Pomodoro technique was born.
+
+### its biggest strength is its simplicity:
+
+1) Get a to-do list and a timer.
+
+2) Set your timer for 25 minutes, and focus on a single task until the timer rings.
+
+3) When your session ends, mark off one pomodoro and record what you completed.
+
+5) Then enjoy a five-minute break.
+
+6) After four pomodoros, take a longer, more restorative 15-30 minute break.
+
+### The 25-minute work sprints are the core of the method, but a Pomodoro practice also includes three rules for getting the most out of each interval:
+
+<b>1) Break down complex projects.</b> If a task requires more than four pomodoros, it needs to be divided into smaller, actionable steps. Sticking to this rule will help ensure you make clear progress on your projects.
+
+<b>2) Small tasks go together.</b> Any tasks that will take less than one Pomodoro should be combined with other simple tasks. For example, "write rent check," "set vet appointment," and "read Pomodoro article" could go together in one session.
+
+<b>3) Once a pomodoro is set, it must ring.</b> The pomodoro is an indivisible unit of time and can not be broken, especially not to check incoming emails, team chats, or text messages. Any ideas, tasks, or requests that come up should be taken note of to come back to later. A digital task manager like Todoist is a great place for these, but pen and paper will do too.
+
+In the event of an unavoidable disruption, take your five-minute break and start again. Cirillo recommends that you track interruptions (internal or external) as they occur and reflect on how to avoid them in your next session.
+
+The rule applies even if you do finish your given task before the timer goes off. Use the rest of your time for overlearning, or improving skills or scope of knowledge. For example, you could spend the extra time reading up on professional journals or researching networking opportunities.
 
 
 ## Downloading and Deploying the Extension :eyes:
