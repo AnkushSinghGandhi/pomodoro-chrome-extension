@@ -1,4 +1,9 @@
 chrome.alarms.create({delayInMinutes: 1/60, periodInMinutes: 1/60});
+chrome.storage.sync.set({"minutes": 25, "seconds": 60, "pause": true, "countDownTimer": "25:00", "pbutton": "pomodoroBtn"},function(){
+    if(!chrome.runtime.error){
+        console.log("Initialized");
+    }
+})
 
 let minutes
 let seconds
@@ -23,7 +28,7 @@ function countdownBG() {
             else
                 seconds = 60;
 
-            pause = value.pause;
+            pause = (value.pause !== undefined) ? value.pause : true;
             countdownCalc();
         }
     });

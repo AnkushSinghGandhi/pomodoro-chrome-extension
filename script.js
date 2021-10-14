@@ -25,50 +25,56 @@ let pomodorosCompleted = 0
 let selectedTaskElement
 
 let array = ["minutes","seconds","pause","countdownTimer","pbutton"];
-chrome.storage.sync.get(array,function(value){
-    if(!chrome.runtime.error){
-        console.log(value);
 
-        if(value.minutes)
-            minutes = value.minutes;
-        else
-            minutes = 25;
+main();
 
-        seconds = value.seconds;
+function main() {
+    chrome.storage.sync.get(array,function(value){
+        if(!chrome.runtime.error){
+            console.log(value);
 
-        if(value.countdownTimer)
-            countdownTimer.innerHTML = value.countdownTimer;
-        else
-            countdownTimer.innerHTML = "25:00";
+            if(value.minutes)
+                minutes = value.minutes;
+            else
+                minutes = 25;
 
-        if((value.pause) && (value.countdownTimer != "25:00")){
-            pause = value.pause;
-            startBtn.innerHTML = "start"
-            countdown()
-        }
-        else if((!value.pause) && (value.countdownTimer != "25:00")){
-            pause = value.pause;
-            startBtn.innerHTML = "Pause"
-            countdown()
-        }
-        else
-            pause = true;
+            seconds = value.seconds;
 
-        if (value.pbutton){
-            if (value.pbutton == "shortBreakBtn"){
-                shortBreakBtn.classList.add('selected');
+            if(value.countdownTimer)
+                countdownTimer.innerHTML = value.countdownTimer;
+            else
+                countdownTimer.innerHTML = "25:00";
+
+            if((value.pause) && (value.countdownTimer != "25:00")){
+                pause = value.pause;
+                startBtn.innerHTML = "start"
+                countdown()
             }
-            else if (value.pbutton == "longBreakBtn"){
-                longBreakBtn.classList.add('selected');
+            else if((!value.pause) && (value.countdownTimer != "25:00")){
+                pause = value.pause;
+                startBtn.innerHTML = "Pause"
+                countdown()
             }
-            else {
+            else
+                pause = true;
+
+            if (value.pbutton){
+                if (value.pbutton == "shortBreakBtn"){
+                    shortBreakBtn.classList.add('selected');
+                }
+                else if (value.pbutton == "longBreakBtn"){
+                    longBreakBtn.classList.add('selected');
+                }
+                else {
+                    pomodoroBtn.classList.add('selected');
+                }
+            }
+            else
                 pomodoroBtn.classList.add('selected');
-            }
         }
-        else
-            pomodoroBtn.classList.add('selected');
-    }
-});
+    });
+}
+
 
 // event listener for pomodoro buttons
 document.addEventListener('click', e => {
@@ -295,11 +301,11 @@ function countdown() {
     // count down every second, when a minute is up, countdown one minute
     // when time reaches 0:00, reset
     if(seconds > 0) {
-        setTimeout(countdown, 1000);
+        setTimeout(main, 1000);
     } else if(currentMins > 0){
         seconds = 60
         minutes--
-        countdown();
+        main();
     } else if(currentMins === 0) {
         audio.play()
         reset()
