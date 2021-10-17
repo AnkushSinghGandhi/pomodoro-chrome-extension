@@ -87,7 +87,7 @@ Once you have the extension code:
 ![Screenshot from 2021-10-12 20-11-36](https://user-images.githubusercontent.com/55637484/136977783-5a3c7c02-a543-46ad-9ea2-f1a153d7793f.png)
 
 
-## Customize your own Extension :smiley:
+## How to use :smiley:
 
 * Click on __Add Task__ button
 * Enter What are you working on
