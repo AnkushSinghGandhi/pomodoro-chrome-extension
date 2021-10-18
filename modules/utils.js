@@ -26,7 +26,7 @@ export const POMODORO_MODE = {
 }
 
 //Pomodoro status
-export const POMODORO_STATES = {
+export const POMODORO_STATUS = {
   start: "Start",
   pause: 'Pause'
 }

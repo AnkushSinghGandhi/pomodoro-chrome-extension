@@ -1,7 +1,7 @@
 import { $, $$ } from './modules/dom.js'
 import {
     POMODORO_MODE,
-    POMODORO_STATES,
+    POMODORO_STATUS,
     SIXTY_SECONDS,
     STORAGE_OPTIONS,
     addZero,
@@ -44,7 +44,7 @@ const setStorageTimer = (mode) => {
 
 //Sorage the current state of the `pause`
 const setStoragePause = () => {
-    startBtn.innerHTML = pause ? POMODORO_STATES.pause : POMODORO_STATES.start
+    startBtn.innerHTML = pause ? POMODORO_STATUS.pause : POMODORO_STATUS.start
     pause = !pause
     if (!pause) {
         // call count down timer
@@ -83,10 +83,10 @@ const setPomodoroStateByStorage = (value) => {
     
     if (isPaused && !isWorkMode) {
         pause = value.pause;
-        startBtn.innerHTML = POMODORO_STATES.start
+        startBtn.innerHTML = POMODORO_STATUS.start
     } else if (!isPaused && !isWorkMode) {
         pause = value.pause;
-        startBtn.innerHTML = POMODORO_STATES.pause
+        startBtn.innerHTML = POMODORO_STATUS.pause
         countdown()
     } else {
         pause = true
@@ -128,7 +128,7 @@ document.addEventListener('click', e => {
     // reset when pomodoro button selected
     pause = true
     seconds = SIXTY_SECONDS
-    startBtn.innerHTML = POMODORO_STATES.start
+    startBtn.innerHTML = POMODORO_STATUS.start
 
     chrome.storage.sync.set({ "pause": pause, "seconds": seconds }, () => logging("added target pomodoro"))
 
@@ -166,7 +166,7 @@ startBtn.addEventListener('click', () => setStoragePause())
 
 // event listener for reset button
 resetBtn.addEventListener('click', () => {
-    startBtn.innerHTML = POMODORO_STATES.start
+    startBtn.innerHTML = POMODORO_STATUS.start
     setStorageTimer(POMODORO_MODE.work)
     
     pause = true
@@ -310,7 +310,7 @@ function countdown() {
 // reset function when countdown ends
 function reset() {
     // set to start the next round    
-    startBtn.innerHTML = POMODORO_STATES.start
+    startBtn.innerHTML = POMODORO_STATUS.start
     pause = true
 
     pomodoroBtns.forEach(button => {
