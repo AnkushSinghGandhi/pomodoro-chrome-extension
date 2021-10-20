@@ -24,6 +24,8 @@ let pomodoro = "pomodoro"
 let pomodorosCompleted = 0
 let selectedTaskElement
 
+// theme_work at last
+
 
 const templateClone = template.content.cloneNode(true)
 const listItem = templateClone.querySelector('.list-item')
@@ -448,3 +450,25 @@ function reset() {
 
     // TODO add option to start next round automatically
 }
+
+
+var vanilla_btn = document.getElementById('Vanilla');
+var default_btn = document.getElementById('Default');
+var blueberry_btn = document.getElementById('BlueBerry');
+
+var timer = document.getElementById('timer');
+
+vanilla_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(28, 97, 74)';
+    timer.style.backgroundColor = 'mediumaquamarine';
+})
+
+default_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(51, 11, 116)';
+    timer.style.backgroundColor = 'rgb(77, 25, 161)';
+})
+
+blueberry_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(116, 8, 8)';
+    timer.style.backgroundColor = 'red';
+})
