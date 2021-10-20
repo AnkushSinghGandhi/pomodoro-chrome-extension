@@ -33,17 +33,19 @@ const taskName = templateClone.querySelector('.task-name')
 const pomodoroCount = templateClone.querySelector('.pomodoro-count')
 
 chrome.storage.local.get('pomo', function (result) {
-    console.log(result.pomo)
-    for(let x=0; x<result.pomo.length; x++){
-        const newTask = {
-            name: result.pomo[x].newTask.name,
-            completedPomodoros: result.pomo[x].newTask.completedPomodoros,
-            totalPomodoros: result.pomo[x].newTask.totalPomodoros,
-            complete: result.pomo[x].newTask.complete,
-            id: result.pomo[x].newTask.id
+    // console.log(result.pomo)
+    if(result){
+        for(let x=0; x<result.pomo.length; x++){
+            const newTask = {
+                name: result.pomo[x].newTask.name,
+                completedPomodoros: result.pomo[x].newTask.completedPomodoros,
+                totalPomodoros: result.pomo[x].newTask.totalPomodoros,
+                complete: result.pomo[x].newTask.complete,
+                id: result.pomo[x].newTask.id
+            }
+    
+            addTask(newTask ,false);
         }
-
-        addTask(newTask ,false);
     }
 });
 
