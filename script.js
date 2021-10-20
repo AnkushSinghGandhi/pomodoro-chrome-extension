@@ -24,6 +24,33 @@ let pomodoro = "pomodoro"
 let pomodorosCompleted = 0
 let selectedTaskElement
 
+// theme_work at last
+
+
+const templateClone = template.content.cloneNode(true)
+const listItem = templateClone.querySelector('.list-item')
+const checkbox = templateClone.querySelector('input[type=checkbox]')
+
+const taskName = templateClone.querySelector('.task-name')
+const pomodoroCount = templateClone.querySelector('.pomodoro-count')
+
+chrome.storage.local.get('pomo', function (result) {
+    // console.log(result.pomo)
+    if(result){
+        for(let x=0; x<result.pomo.length; x++){
+            const newTask = {
+                name: result.pomo[x].newTask.name,
+                completedPomodoros: result.pomo[x].newTask.completedPomodoros,
+                totalPomodoros: result.pomo[x].newTask.totalPomodoros,
+                complete: result.pomo[x].newTask.complete,
+                id: result.pomo[x].newTask.id
+            }
+    
+            addTask(newTask ,false);
+        }
+    }
+});
+
 let array = ["minutes","seconds","pause","countdownTimer","pbutton"];
 chrome.storage.sync.get(array,function(value){
     if(!chrome.runtime.error){
@@ -220,10 +247,28 @@ saveBtn.addEventListener('click', e => {
         complete: false,
         id: new Date().valueOf().toString()
     }
+
     // add task to array
     tasks.push(newTask)
-    // render task
-    addTask(newTask)
+
+
+     // Local Chrome Storage
+    
+    chrome.storage.local.get({pomo: []}, function (result) {
+        
+        var pomo = result.pomo;
+        pomo.push({newTask: newTask});
+        
+        chrome.storage.local.set({pomo: pomo}, function () {
+            
+            chrome.storage.local.get('pomo', function (result) {
+                console.log(result.pomo)
+            });
+        });
+    });
+
+
+    addTask(newTask, true);
 
     // clear inputs
     taskNameInput.value = ""
@@ -240,6 +285,28 @@ document.addEventListener('click', e => {
 
         // find the id of the task to remove the task object from the array  
         const taskId = listItem.dataset.taskId
+
+        // console.log(taskId) -> Correct Id
+
+        chrome.storage.local.get('pomo', function (result) {
+        
+            var pomo = result.pomo;
+            
+            pomo = pomo.filter((item, i) => {
+                // console.log(i);
+                // console.log(item.newTask.id);
+                return item.newTask.id !== taskId
+            })
+            // console.log("pomo" + pomo);
+            
+            chrome.storage.local.set({pomo: pomo}, function () {
+                
+                chrome.storage.local.get('pomo', function (result) {
+                    console.log(result.pomo)
+                });
+            });
+        });
+
         tasks = tasks.filter(task => task.id !== taskId )
 
         // remove title when selected task is deleted
@@ -270,17 +337,35 @@ document.addEventListener('click', e => {
 })
 
 // add task as list item
-function addTask(task) {
+function addTask(task, append_pomo) {
     const templateClone = template.content.cloneNode(true)
     const listItem = templateClone.querySelector('.list-item')
     listItem.dataset.taskId = task.id
     const checkbox = templateClone.querySelector('input[type=checkbox]')
     checkbox.checked = task.complete
+
     const taskName = templateClone.querySelector('.task-name')
-    taskName.innerHTML = task.name
     const pomodoroCount = templateClone.querySelector('.pomodoro-count')
-    pomodoroCount.innerHTML = task.completedPomodoros.toString() + '/' + task.totalPomodoros
-    tasksList.appendChild(templateClone)
+
+
+    if(append_pomo){
+        chrome.storage.local.get('pomo', function (result) {
+            console.log(result.pomo.length);
+            if(result){
+                taskName.innerHTML = task.name;
+                pomodoroCount.innerHTML = task.completedPomodoros.toString() + '/' + task.totalPomodoros;
+                tasksList.appendChild(templateClone)
+                console.log(task.id + "\n");
+            }
+        });
+    }else{
+        // console.log(task);
+        taskName.innerHTML = task.name
+    
+        pomodoroCount.innerHTML = task.completedPomodoros.toString() + '/' + task.totalPomodoros
+        tasksList.appendChild(templateClone)
+        console.log(task.id + "\n");
+    }
 }
 
 // countdown function
@@ -365,3 +450,25 @@ function reset() {
 
     // TODO add option to start next round automatically
 }
+
+
+var vanilla_btn = document.getElementById('Vanilla');
+var default_btn = document.getElementById('Default');
+var blueberry_btn = document.getElementById('BlueBerry');
+
+var timer = document.getElementById('timer');
+
+vanilla_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(28, 97, 74)';
+    timer.style.backgroundColor = 'mediumaquamarine';
+})
+
+default_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(51, 11, 116)';
+    timer.style.backgroundColor = 'rgb(77, 25, 161)';
+})
+
+blueberry_btn.addEventListener('click', ()=>{
+    document.body.style.backgroundColor = 'rgb(116, 8, 8)';
+    timer.style.backgroundColor = 'red';
+})
