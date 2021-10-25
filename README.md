@@ -28,11 +28,10 @@
 </p>
 
 # pomodoro-chrome-extension (v1.0.1)
-Pomodoro time & To do list chrome extension.
+Increase your productivity by Pomodoro Chrome Extension
+This extension allows you to focus on a single task with the pomodoro technique.
 
-## Demo :purple_heart:
-
-![Screenshot from 2021-10-12 19-58-50](https://user-images.githubusercontent.com/55637484/136977309-28dfd6e6-2d5f-4438-b629-c9074e75c069.png)
+<img align="right" height="450" src="https://user-images.githubusercontent.com/55637484/138640564-8d627b52-c10b-4d85-b9c8-ee584800d595.png" />
 
 ## What is the Pomodoro Technique?
 The Pomodoro Technique was developed by Francesco Cirillo. He was struggling to focus on his studies. Feeling overwhelmed, he asked himself to commit to just 10 minutes of focused study time. Encouraged by the challenge, he found a tomato (pomodoro in Italian) shaped kitchen timer, and the Pomodoro technique was born.
@@ -94,7 +93,7 @@ Once you have the extension code:
 * Set estimated no. of work round of 25 min each
 * Click on __Save__ button
 
-<p><img src="https://user-images.githubusercontent.com/55637484/136978282-25a80ede-3b47-4467-9e11-5aa0cd62440c.png"> <img src="https://user-images.githubusercontent.com/55637484/136978396-82d61708-8fbe-4bd9-b96b-a4c0925bc531.png"></p>
+<p><img height="400" src="https://user-images.githubusercontent.com/55637484/138641307-9092c80c-b6eb-4b23-9215-d2847559cfa2.png"> <img height="400" src="https://user-images.githubusercontent.com/55637484/138641323-e9707753-d894-463d-bed0-e825d45d70cf.png"> <img src="https://user-images.githubusercontent.com/55637484/138641331-3e9ecb1f-1915-460d-a9f4-cfdbda2c0044.png"> <img src="https://user-images.githubusercontent.com/55637484/138641334-11155c1d-c77d-4ea6-9311-c73415fd702f.png"> </p>
   
 <a href="https://www.buymeacoffee.com/ankushsingh"><img src="footer.jpg"></a>
 
