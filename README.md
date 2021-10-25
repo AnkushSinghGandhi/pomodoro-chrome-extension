@@ -93,7 +93,7 @@ Once you have the extension code:
 * Set estimated no. of work round of 25 min each
 * Click on __Save__ button
 
-<p><img height="400" src="https://user-images.githubusercontent.com/55637484/138641307-9092c80c-b6eb-4b23-9215-d2847559cfa2.png"> <img height="400" src="https://user-images.githubusercontent.com/55637484/138641323-e9707753-d894-463d-bed0-e825d45d70cf.png"> <img height="400" src="https://user-images.githubusercontent.com/55637484/138641331-3e9ecb1f-1915-460d-a9f4-cfdbda2c0044.png"> <img height="400" src="https://user-images.githubusercontent.com/55637484/138641334-11155c1d-c77d-4ea6-9311-c73415fd702f.png"> </p>
+<p><img height="350" src="https://user-images.githubusercontent.com/55637484/138641307-9092c80c-b6eb-4b23-9215-d2847559cfa2.png"> <img height="350" src="https://user-images.githubusercontent.com/55637484/138641323-e9707753-d894-463d-bed0-e825d45d70cf.png"> <img height="350" src="https://user-images.githubusercontent.com/55637484/138641331-3e9ecb1f-1915-460d-a9f4-cfdbda2c0044.png"> <img height="350" src="https://user-images.githubusercontent.com/55637484/138641334-11155c1d-c77d-4ea6-9311-c73415fd702f.png"> </p>
   
 <a href="https://www.buymeacoffee.com/ankushsingh"><img src="footer.jpg"></a>
 
