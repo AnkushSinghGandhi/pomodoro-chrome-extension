@@ -103,7 +103,7 @@ main {
 
 .main-content{
     background-color: rgba(98, 0, 165, .2);
-    width: 80%;
+    width: 100%;
     margin: 1rem auto;
     border-radius: 10px;
     padding: 2rem;
@@ -117,7 +117,42 @@ main {
     width: 80%
 }
 
+.pomodoro-container{
+    padding: 2rem;
+    width: 100%;
+    margin: 1rem auto;
+}
+
+.pomodoro-section > div{
+    flex: 1;
+}
+
+.pomodoro-image{
+    text-align: center;
+}
+
+.pomodoro-heading{
+    padding: .5rem 0;
+}
+
+.pomodoro-content{
+    padding: 1rem;
+}
+
+.pomodoro-li{
+    padding: .3rem 0;
+}
+
+.pomodoro-lists{
+    margin-left: 1rem;
+}
+
 @media (min-width: 768px) {
+
+    .pomodoro-container{
+        width: 80%;
+    }
+
     .header-heading{
         width: 70%;
     }
@@ -126,5 +161,14 @@ main {
 @media (min-width: 1024px) {
     .header-heading{
         width: 60%;
+    }
+    
+    .pomodoro-container{
+        width: 80%;
+        text-align: start;
+    }
+
+    .pomodoro-section{
+        display: flex;
     }
 }
