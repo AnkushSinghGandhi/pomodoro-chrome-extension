@@ -28,8 +28,7 @@
 </p>
 
 # pomodoro-chrome-extension (v1.0.1)
-Increase your productivity by Pomodoro Chrome Extension
-This extension allows you to focus on a single task with the pomodoro technique.
+A chrome extension that works as a pomodoro timer and a to-do list to help people get their work done with more focus.
 
 <img align="right" height="450" src="https://user-images.githubusercontent.com/55637484/138640564-8d627b52-c10b-4d85-b9c8-ee584800d595.png" />
 
